@@ -33,7 +33,8 @@ const Usuario = db.sequelize.define('usuarios', {
     },
     papel: {
         type: db.Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        defaultValue: 1
     }
 }) 
 
