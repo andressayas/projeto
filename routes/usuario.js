@@ -1,7 +1,9 @@
 const express  = require('express')
 const router   = express.Router()
-const Usuario  = require('../models/Usuario')    
+const Usuario  = require('../models/Usuario')  
+const Cargo    = require('../models/Cargo')  
 const passport = require('passport')
+const { Op }   = require('sequelize')
 
 router.get('/cadastro', (req, res) => {
     res.render('usuarios/cadastro')
@@ -72,11 +74,43 @@ router.get('/login', (req, res) => {
 
 router.post('/login', passport.authenticate('local', {
     successRedirect: '/',
+    successFlash: true,
     failureRedirect: '/usuario/login',
     failureFlash: true
 }), (req, res) => {
     req.flash('error_msg', 'Houve um erro ao efetuar o processo de login')
     res.redirect('/')
+})
+
+router.get('/cadastro/cargo', (req, res) => {
+    Usuario.findOne({where: {id: req.user.id}}).then((usuario) => {
+        Cargo.findAll({where: {id: {[Op.ne]: 1}}}).then((cargos) => {
+            res.render('usuarios/cadastro_cargo', {usuario: usuario, cargos: cargos})
+        }).catch((erro) => {
+            req.flash('error_msg', 'Houve um erro ao carregar os cargos, tente novamente mais tarde...')
+            res.redirect('/')
+        })
+    }).catch((erro) => {
+        req.flash('error_msg', 'Houve um erro ao carregar suas informações, tente novamente mais tarde...')
+        res.redirect('/')
+    })
+})
+
+router.post('/cadastro/cargo', (req, res) => {
+    Usuario.findOne({where: {id: req.body.id}}).then((usuarios) => { 
+        usuarios.update({papel: req.body.cargo}, {where: {cargo: 1}}).then(() => {
+            req.flash('success_msg', 'Cadastro feito com sucesso! Agora você é um usuário com um cargo cadastrado no site! Agora pessoas podem lhe contratar, que legal!')
+            res.redirect('/')
+        }).catch((err) => {
+            console.log(err)
+            req.flash('error_msg', 'Erro interno')
+            res.redirect('/')
+        })
+    }).catch((err) => {
+        console.log(err)
+        req.flash('error_msg', 'Houve um erro ao salvar o seu cadastro com o cargo escolhido, tente novamente mais tarde...')
+        res.redirect('/')
+    })  
 })
 
 module.exports = router
