@@ -7,6 +7,14 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
+    {{#if error}}
+            <div <!--class="alert alert-danger alert-dismissible fade show" role="alert"-->>
+                {{error}}
+                <!--<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> -->
+            </div>
+        {{else}}
+        {{/if}}
+    {{>_msg}}
     {{{body}}}
 </body>
 </html>
