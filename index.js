@@ -2,15 +2,18 @@
     const app = express();
     const server = require('http').createServer(app);
     const path = require('path')
+    const handlebars = require('express-handlebars')
     const usuario = require('./routes/usuario')
     const bodyParser = require('body-parser')
 
 // Indicando aa pastas a serem usadas
 
     app.use(express.static(path.join(__dirname, 'public')));
-    app.set('views', path.join(__dirname, 'public', 'pages'));
-    app.engine('html', require('ejs').renderFile);
-    app.set('view engine', 'html');
+
+    // Configurando o Handlebars
+
+        app.engine('handlebars', handlebars({defaultLayout: 'main'}))
+        app.set('view engine', 'handlebars')
 
 //Body-Parser
 
