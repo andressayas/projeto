@@ -1,6 +1,7 @@
-const express = require('express')
-const router = express.Router()
-const Usuario = require('../models/Usuario')    
+const express  = require('express')
+const router   = express.Router()
+const Usuario  = require('../models/Usuario')    
+const passport = require('passport')
 
 router.get('/cadastro', (req, res) => {
     res.render('usuarios/cadastro')
@@ -35,8 +36,6 @@ router.post('/cadastro', (req, res) => {
         erros.push({texto: 'As senhas estão diferentes!'});
     }
 
-    console.log(erros)
-
     if(erros.length > 0){
         res.render('usuarios/cadastro', {erros: erros})
     } else {
@@ -55,14 +54,29 @@ router.post('/cadastro', (req, res) => {
                 }).then(() => { //Faça isso caso dê certo
                     res.redirect('/')
                 }).catch((erro) => { //Faça isso caso dê errado
+                    req.flash('error_msg', "Houve um erro no processo de cadastro")
                     res.send('Erro no cadastro: ' + erro)
                 })
             }
         }).catch((erro) => {
+            req.flash('error_msg', 'Houve um erro interno')
             res.send('Erro interno: ' + erro)
         })
     }
     
+})
+
+router.get('/login', (req, res) => {
+    res.render('usuarios/login')
+})
+
+router.post('/login', passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/usuario/login',
+    failureFlash: true
+}), (req, res) => {
+    req.flash('error_msg', 'Houve um erro ao efetuar o processo de login')
+    res.redirect('/')
 })
 
 module.exports = router
