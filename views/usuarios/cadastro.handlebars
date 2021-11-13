@@ -1,3 +1,8 @@
+{{#each erros}}
+    <div>{{texto}}</div>
+{{else}}
+{{/each}}
+
 <title>Faça seu cadastro!</title>
 
 <div></div>
@@ -6,6 +11,7 @@
     <input type="text" name="nome" placeholder="nome"><br><br>
     <input type="text" name="email" placeholder="email"><br><br>
     <input type="password" name="senha" placeholder="senha"><br><br>
+    <input type="password" name="senha2" placeholder="Digite sua senha novamente"><br><br>
     <input type="text" name="localizacao" placeholder="localizacao"><br><br>
     <input type="text" name="telefone" placeholder="telefone"><br><br>
     <input type="date" name="data_nasc" placeholder="data de nascimento"><br><br>
