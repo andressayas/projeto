@@ -1,0 +1,20 @@
+{{#if usuarios}}
+    {{#if parametro}}
+        <h1>Resultados para {{parametro}}:</h1>
+    {{else}}
+        <h1>Resultados:</h1>
+    {{/if}}
+
+    {{#each usuarios}}
+        <div>
+            <h3>{{dataValues.nome}}</h3>
+            <p><b>Cargo:</b> {{dataValues.Cargos.dataValues.cargo}}</p>
+            <p><b>Telefone:</b> {{dataValues.telefone}}</p>
+            <a href="/usuarios/perfil/{{dataValues.id}}">Ver mais</a>
+        </div>
+        <hr>
+    {{/each}}
+    
+{{else}}
+    <h1>Nenhum usuário encontrado de acordo com {{parametro}}</h1>
+{{/if}}

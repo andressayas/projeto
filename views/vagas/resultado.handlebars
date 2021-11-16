@@ -1,0 +1,28 @@
+<head>
+    <title>Vagas disponíveis</title>
+</head>
+
+{{#if vagas}}
+    
+    {{#if parametro}}
+        <h1>Resultados para {{parametro}}</h1>
+        <hr>
+    {{else}}
+        <h1>Resultados:</h1>
+        <hr>
+    {{/if}}
+    
+    {{#each vagas}}
+        <div>
+            <h4>{{dataValues.titulo}}</h4>
+            <p>{{dataValues.vaga_descri}}</p>
+            <p><b>Cargo:</b> {{dataValues.cargo_nome}}</p>
+            <p><b>Salário:</b> {{dataValues.vaga_salario}}</p>
+            <a href='/vagas/resultado/{{dataValues.id}}'>Ver mais</a>
+        </div>
+        <hr>
+    {{/each}}
+
+{{else}}
+    <h1>Nenhuma vaga encontrada ;-;</h1>
+{{/if}}

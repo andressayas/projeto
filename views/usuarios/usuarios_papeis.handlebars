@@ -1,0 +1,11 @@
+{{#each usuarios}}
+    <div>
+        <h3>{{dataValues.nome}}</h3>
+        <p><b>Cargo:</b> {{dataValues.Cargos.dataValues.cargo}}</p>
+        <p><b>Telefone:</b> {{dataValues.telefone}}</p>
+        <a href="/usuarios/perfil/{{dataValues.id}}">Ver mais</a>
+    </div>
+    <hr>
+{{else}}
+    <h1>Nenhum usuário com cargo registrado...</h1>
+{{/each}}

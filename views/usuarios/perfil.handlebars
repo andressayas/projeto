@@ -1,0 +1,10 @@
+{{#if usuario}}
+    <h1>{{usuario.dataValues.nome}}</h1>
+    <p><b>E-mail:</b> {{usuario.dataValues.email}}</p>
+    <p><b>Telefone:</b> {{usuario.dataValues.telefone}}</p>
+    <p><b>Localização:</b> {{usuario.dataValues.localizacao}}</p>
+    <h3>Cargo: {{usuario.dataValues.Cargos.dataValues.cargo}}</h3>
+    {{#if user}}
+        <a href="/usuarios/perfil/{{usuario.dataValues.id}}/edit">Editar perfil</a>
+    {{/if}}
+{{/if}}

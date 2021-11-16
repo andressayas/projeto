@@ -4,19 +4,7 @@
     
 <!-- Navegador -->
 <section>
-    <nav>
-        <a href="#" class="logo">Emprega +</a>
 
-            <ul>
-
-                <li><a href="#" class="active"> Home</a></li>
-                <li><a href="/sobre" class="active"> Sobre</a></li>
-                <li><a href="#" class="active"> Equipe</a></li>
-                <li><a href="#" class="active"> Contato</a></li>
-
-            </ul>
-
-    </nav>
     <!-- Textos -->
 
     <div class="conteudo-texto">
@@ -26,6 +14,20 @@
         <p>Oportunidade de emprego de forma fácil e prática.</p>
 
         <button class="btn1">Saiba mais</button>
+
+        <!-- Isso aqui é um exemplo, porém, recomenda deixar desta mesma forma -->
+
+        <p>Pesquise por vagas de acordo com seu cargo: </p>
+        <form action="/vagas/pesquisar-vagas" method="post">
+            <input type="text" name="campo" placeholder="Informe um cargos ou profissão">
+            <button type="submit">Pesquisar</button>
+        </form>
+
+        <p>Pesquise por usuários de acordo com seu nome: </p>
+        <form action="/usuarios/pesquisar/nome" method="post">
+            <input type="text" name="campo" placeholder="Informe um nome">
+            <button type="submit">Pesquisar</button>
+        </form>
             
     </div>
 

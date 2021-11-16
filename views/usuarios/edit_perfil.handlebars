@@ -1,0 +1,14 @@
+<form action="/usuarios/perfil/edit" method="post">
+    <input type="hidden" name="id" value="{{usuario.dataValues.id}}">
+    <input type="text" name="nome" placeholder="nome" value="{{usuario.dataValues.nome}}"><br><br>
+    <input type="text" name="localizacao" placeholder="localizacao" value="{{usuario.dataValues.localizacao}}"><br><br>
+    <input type="text" name="telefone" placeholder="telefone" value="{{usuario.dataValues.telefone}}"><br><br>
+    <select name="cargo">
+        {{#each cargos}}
+            <option value="{{dataValues.id}}">{{dataValues.cargo}}</option>
+        {{else}}
+            <option value="0">Nenhum cargo registrado</option>
+        {{/each}}
+    </select><br><br>
+    <button type="submit">Editar</button>
+</form> 
