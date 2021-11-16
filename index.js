@@ -4,9 +4,13 @@
     const path       = require('path')
     const handlebars = require('express-handlebars')
     const usuario    = require('./routes/usuario')
+    const Usuario    = require('./models/Usuario')
+    const vaga       = require('./routes/vaga')
+    const Vaga       = require('./models/Vaga')
     const bodyParser = require('body-parser')
     const session    = require('express-session')
     const flash      = require('connect-flash')
+    const { Op }     = require('sequelize')
     const passport   = require('passport')
     require('./config/auth')(passport)
 
@@ -58,6 +62,7 @@
     })
 
     app.use('/usuarios', usuario)
+    app.use('/vagas', vaga)
                     
 // Abrindo o server
 

@@ -1,0 +1,13 @@
+<h1>{{vaga.dataValues.vaga_titulo}}</h1>
+<hr>
+<h4><b>Localização:</b> {{vaga.dataValues.vaga_local}}</h4>
+<p><b>Salário:</b> {{vaga.dataValues.vaga_salario}}</p>
+<p><b>Cargo requerido:</b> {{vaga.dataValues.cargo_nome}}</p>
+<h3>Descricão: </h3>
+<p>{{vaga.dataValues.vaga_descri}}</p>
+{{#if user}}
+    <a href='/vagas/excluir/{{vaga.dataValues.id}}'>Apagar vaga</a>
+{{else}}
+    <p>------> Vaga criada por: {{Usuarios.id}}, em {{vagas.DataValues.createdAt}}</p>
+{{/if}}
+
