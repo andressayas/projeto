@@ -1,0 +1,23 @@
+<head>
+    <title>Crie uma vaga!</title>
+</head>
+
+<h1>Complete os campos para criar a vaga: </h1>
+<form action="/vagas/criar-vaga" method="post">
+    <input type="hidden" name="id" value="{{user.id}}">
+    <label>Título: </label>
+        <input type="text" name="titulo" placeholder="informe o título" maxlength="255" required><br><br>
+    <label>Descrição: </label>
+        <textarea name="descricao" placeholder="informe uma descricao" required></textarea><br><br> 
+    <label>Salário: </label>
+        <input type="number" name="salario" placeholder="informe o salário da vaga" required><br><br>
+    <label>Localização: </label>
+        <input type="text" name="localizacao" placeholder="informe o local da vaga" required><br><br>
+    <label>Informe o cargo: </label>
+    <select name="cargo" required>
+        {{#each cargos}}
+            <option value="{{dataValues.id}}">{{dataValues.cargo}}</option>
+        {{/each}}
+    </select><br><br>
+    <button type="submit">Criar vaga</button>
+</form>

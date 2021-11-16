@@ -1,0 +1,22 @@
+<head>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<nav>
+    <a href="#" class="logo">Emprega +</a>
+
+        <ul>
+
+            <li><a href="/" class="active"> Home</a></li>
+            <li><a href="/sobre" class="active"> Sobre</a></li>
+            {{#if user}}
+                <li><a href="/usuarios/vagas-criadas" class="active"> Minhas vagas</a></li>
+                <li><a href="/usuarios/perfil/{{user.id}}" class="active">Perfil</a></li>
+                <li><a href="/usuarios/cargos/todos-os-usuarios" class="active">Profissionais</a></li>
+                <li><a href="/vagas/home" class="active">Vagas</a></li>
+            {{/if}}
+
+        </ul>
+
+</nav>
+
