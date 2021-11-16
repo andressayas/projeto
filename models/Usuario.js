@@ -1,6 +1,7 @@
 /* Arquivo para criação do Model Usuario */
 
 const db = require('../config/db')
+const Cargo = require('./Cargo')
 
 const Usuario = db.sequelize.define('usuarios', {
     nome: {
@@ -38,7 +39,9 @@ const Usuario = db.sequelize.define('usuarios', {
     }
 }) 
 
-// Usuario.sync({force: true})
+Cargo.hasMany(Usuario, {as: 'Usuarios', foreignKey: 'papel'})
+Usuario.belongsTo(Cargo, {as: 'Cargos', foreignKey: 'papel'})
+
+//Usuario.sync({force: true})
 
 module.exports = Usuario
-

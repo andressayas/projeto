@@ -1,0 +1,17 @@
+{{#if vagas}}
+    <h1>Vagas criadas: </h1>
+    <hr>
+    <a href="/vagas/criar-vaga">Criar vaga de trabalho ou emprego</a>
+    {{#each vagas}}
+        <div>
+            <h3>{{dataValues.vaga_titulo}}</h3>
+            <p><b>Cargo:</b> {{dataValues.Cargos.dataValues.cargo}}</p>
+            <p><b>Salário:</b> {{dataValues.vaga_salario}}</p>
+            <p><b>Criado em:</b> {{dataValues.createdAt}}</p>
+            <a href="/vagas/resultado/{{dataValues.id}}">Ver mais</a>
+        </div>
+    {{/each}}
+{{else}}
+    <h1>Você não criou nenhuma vaga... <a href="/vagas/criar-vaga">Quer criar?</a></h1>
+{{/if}}
+
