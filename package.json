@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "electron main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,6 +20,8 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",
+    "electron": "^16.0.0",
+    "electron-reload": "^2.0.0-alpha.1",
     "express": "^4.17.1",
     "express-handlebars": "^5.3.3",
     "express-session": "^1.17.2",
